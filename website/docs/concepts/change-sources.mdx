@@ -1,0 +1,13 @@
+---
+title: Change sources
+slug: /change-sources
+description: See which local and remote changes Fettle can review.
+---
+
+# Change sources
+
+Fettle can compare uncommitted working-tree changes, a local branch against its inferred base, one Saggar agent turn, or a GitHub pull request. Local comparisons read Git without changing it. Pull requests are read through the GitHub CLI and aren't fetched into your clone.
+
+When the checked-out branch is the local default branch, **Changes since** uses its remote-tracking upstream when one exists. This keeps local commits on `main` reviewable before they're pushed. Without an upstream, Fettle falls back to the local default branch and shows uncommitted work in the working-tree target.
+
+The chronological home feed mixes these sources into one queue. The project browser remains available when you need to choose a repository or comparison explicitly.

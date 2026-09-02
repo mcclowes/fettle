@@ -1,0 +1,11 @@
+---
+title: Saggar integration
+slug: /saggar
+description: Understand what Saggar adds to Fettle.
+---
+
+# Saggar integration
+
+Saggar records an agent turn ledger under `~/.saggar/turns/v1/`. Fettle reads that ledger to bind a prompt and the resulting file changes into one review target. Accepted or rejected turn reviews can be written to Saggar's local review outbox for the agent to consume.
+
+Without Saggar, repository, branch, and GitHub pull request review still work. Fettle doesn't inherit Saggar credentials or run an agent itself.

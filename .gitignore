@@ -1,0 +1,7 @@
+.DS_Store
+website/node_modules/
+website/build/
+website/.docusaurus/
+website/.next/
+website/public/docs/
+website/tsconfig.tsbuildinfo

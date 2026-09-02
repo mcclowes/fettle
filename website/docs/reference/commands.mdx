@@ -1,0 +1,32 @@
+---
+title: Commands
+slug: /commands
+description: Command-line reference for Fettle.
+---
+
+# Commands
+
+```text
+fettle <path>…                       Open repositories
+fettle turns [--json]                List turns for this terminal or worktree
+fettle review [turn-id]              Open a turn review
+fettle ai-review [pr] [--provider codex|claude]
+                                     Review a pull request in a read-only Saggar agent terminal
+fettle worktrees [--json] [--stale-after <days>]
+                                     Inspect stale worktrees and suggested cleanup
+fettle shim                          Print the shell shim that runs this binary
+fettle skill                         Print where the bundled agent skill lives
+fettle walkthrough lint <walkthrough.md> --request <request.json>
+                                     Validate a walkthrough's syntax and evidence
+fettle visual inspect [--json]       Detect screenshot-test systems
+fettle visual status [--json]        Show normalized visual results
+fettle visual run                    Run configured visual checks
+fettle help
+```
+
+Inside a Saggar terminal, `SAGGAR_SESSION` scopes `turns`, `review`, and
+`ai-review` to that session. `worktrees` only prints cleanup commands; Fettle
+never runs them. Exit codes: 0 done, 1 refused, 2 bad arguments, 3 nothing to
+talk to.
+
+Install the shim from **Help > Install the fettle shim…**.

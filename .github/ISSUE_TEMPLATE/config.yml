@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Ask a question
+    url: https://github.com/mcclowes/fettle/discussions/categories/q-a
+    about: Get help with setup or usage
+  - name: Discuss an idea
+    url: https://github.com/mcclowes/fettle/discussions/categories/ideas
+    about: Explore an idea before turning it into a feature request
+  - name: Read the documentation
+    url: https://fettle.marginalutility.dev/docs
+    about: Find guides, concepts, and reference material

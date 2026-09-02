@@ -1,0 +1,11 @@
+---
+title: Review model
+slug: /review-model
+description: Understand what Fettle records during a review.
+---
+
+# Review model
+
+A review belongs to one target and stores file marks, line and file comments, overall notes, screenshot annotations, and a verdict. File marks use content hashes. If a file changes after review, Fettle shows that mark as stale without deleting it.
+
+An exported review packet carries this context back to an agent. Export doesn't alter the repository. Posting to GitHub is deliberately narrower: Fettle can add one comment review to an existing pull request, but can't approve, request changes, merge, or push.
