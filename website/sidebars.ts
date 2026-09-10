@@ -20,6 +20,7 @@ const sidebars: SidebarsConfig = {
       link: {type: 'doc', id: 'reference/index'},
       items: ['reference/commands', 'reference/keyboard'],
     },
+    'faq',
   ],
 };
 

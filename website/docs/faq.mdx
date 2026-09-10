@@ -1,0 +1,79 @@
+---
+title: FAQ
+slug: /faq
+description: Common questions about what Fettle reviews, what it touches, and what it never does.
+---
+
+# FAQ
+
+## What is Fettle?
+
+A native macOS review desk for code you haven't accepted yet. It keeps the diff, the prompt that produced it, screenshots, your comments, and your verdict in one place, then hands the review back to the agent or to a pull request. See the [review model](/review-model) for what a review actually stores.
+
+## Do I need Saggar?
+
+No. Repository, branch, and pull request reviews all work on their own. [Saggar](/saggar) adds two things: changes grouped by agent turn, and the prompt that caused them. Without it you review a working tree, a branch, or a pull request instead.
+
+## What can I review?
+
+Uncommitted working-tree changes, a local branch against its inferred base, one Saggar agent turn, or an open GitHub pull request. The home feed mixes all four into one queue. [Change sources](/change-sources) covers how each one is compared.
+
+## Does Fettle change my repository?
+
+No. Git is read-only: Fettle never stages, commits, fetches, pushes, or writes repository metadata, and it never edits source files. Fixes travel back to the agent as a review packet rather than as edits. Pull requests are read through the GitHub CLI, so nothing is fetched into your clone.
+
+The one file Fettle may create is the `.fettle/shots/` directory for screenshots. It won't write your `.gitignore`; it offers the line for you to add.
+
+## Do I need to push a branch to review it?
+
+No. That's the point. Local commits, uncommitted work, and agent turns are all reviewable where they are. When you're on the default branch and it has an upstream, **Changes since** compares against that upstream, so unpushed commits on `main` stay reviewable.
+
+## What does Fettle write to GitHub?
+
+Two things, both explicit. Promoting a review (⌘⇧P) posts its comments to an existing pull request as one review with the `COMMENT` event, anchored to the lines you wrote them on; a second press only carries what hasn't gone before. Merging a reviewed pull request or its stack is available from the hand-back menu and asks for a destructive confirmation first.
+
+Fettle never approves, requests changes, or pushes. Your verdict travels as text, not as a GitHub approval.
+
+## Does Fettle decide whether the code is good?
+
+No. Nothing in Fettle summarizes a diff or tells you it looks fine. The verdict is yours: needs work, or accepted.
+
+The optional AI review is separate and explicit. Choose **Review tools ▸ Run AI review** on a pull request, pick Codex or Claude, and the provider runs read-only. Valid findings arrive as `AI review:` comments on the relevant lines, which you then keep, edit, or dismiss like any other comment.
+
+## Does my code leave the machine?
+
+Not unless you send it. Code and review state stay local until you run an AI review or promote comments to GitHub. Both are things you start deliberately.
+
+## Where is my review state kept?
+
+In `~/.fettle/fettle.sqlite`. Marks are only added, never rewritten — an explicit unmark is the only thing that deletes one.
+
+## What happens when a file changes after I've reviewed it?
+
+The mark goes stale rather than disappearing. Marks bind to a content hash of the change, so a file that returns to a hash you already reviewed counts as reviewed again. Outdated comments stay visible to you but don't enter exports or GitHub reviews.
+
+Attribution survives amends, rebases, and squashes, because Fettle compares worktree content rather than commits.
+
+## How do screenshots get into a review?
+
+Four ways: an agent writes them into `.fettle/shots/`, Fettle captures a localhost page headlessly, it reads Storybook stories, or you drag images in. Projects with their own visual tests can point `.fettle/visual-command` at the command that runs them, and Fettle imports the results from `.fettle/visual-results.json`. Existing baselines stay authoritative — accepting a review never updates them.
+
+Markers attach to the image and the turn, never to a line of code.
+
+## How does an agent open its own work for review?
+
+Install the agent skills from **Help ▸ Manage agent skills…**, then ask the agent to open its latest turn in Fettle. From a terminal, the [`fettle` command](/commands) does the same: `fettle turns` lists them, `fettle review` opens one.
+
+## What are the requirements?
+
+macOS 26 Tahoe or later on Apple silicon. Install with:
+
+```bash
+brew install --cask mcclowes/fettle/fettle
+```
+
+There's no Linux or Windows version, and none planned — Fettle is a native Mac app.
+
+## Something's broken, or missing.
+
+Report a reproducible bug on the [issue tracker](https://github.com/mcclowes/fettle/issues/new?template=bug.yml), suggest a feature with the [feature form](https://github.com/mcclowes/fettle/issues/new?template=feature.yml), or ask in [Discussions](https://github.com/mcclowes/fettle/discussions). Please report security issues privately, as [SECURITY.md](https://github.com/mcclowes/fettle/blob/main/SECURITY.md) describes.

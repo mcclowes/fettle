@@ -34,7 +34,7 @@ const config: Config = {
       style: 'light',
       links: [
         {title: 'Start', items: [{label: 'Getting started', to: '/getting-started'}, {label: 'Review a change', to: '/review-a-change'}]},
-        {title: 'Reference', items: [{label: 'Commands', to: '/commands'}, {label: 'How reviews work', to: '/review-model'}]},
+        {title: 'Reference', items: [{label: 'Commands', to: '/commands'}, {label: 'How reviews work', to: '/review-model'}, {label: 'FAQ', to: '/faq'}]},
         {title: 'Project', items: [{label: 'GitHub', href: 'https://github.com/mcclowes/fettle'}, {label: 'Saggar', href: 'https://saggar.marginalutility.dev'}]},
       ],
       copyright: 'A native macOS review desk, companion to Saggar.',
