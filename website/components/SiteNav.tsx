@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Show, UserButton } from "@clerk/nextjs";
 import { useEffect, useRef, useState } from "react";
 import { AUTH_ENABLED } from "@/lib/auth";
 
@@ -34,14 +34,14 @@ export function SiteNav() {
           <a href="https://github.com/mcclowes/fettle">GitHub</a>
           {AUTH_ENABLED ? (
             <>
-              <SignedOut>
+              <Show when="signed-out">
                 <Link href="/account/sign-in">Sign in</Link>
                 <Link className="button small" href="/account/sign-up">Create account</Link>
-              </SignedOut>
-              <SignedIn>
+              </Show>
+              <Show when="signed-in">
                 <Link href="/account">Account</Link>
                 <UserButton />
-              </SignedIn>
+              </Show>
             </>
           ) : (
             <Link href="/account/sign-in">Sign in</Link>
