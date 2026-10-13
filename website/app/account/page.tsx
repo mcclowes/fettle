@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { SignedIn, SignedOut, UserProfile } from "@clerk/nextjs";
+import { Show, UserProfile } from "@clerk/nextjs";
 import { AUTH_ENABLED } from "@/lib/auth";
 
 export default function AccountPage() {
@@ -11,8 +11,8 @@ export default function AccountPage() {
 
   return (
     <main className="account-page">
-      <SignedOut><div className="auth-fallback"><h1>Sign in to continue</h1><Link className="button" href="/account/sign-in">Sign in</Link></div></SignedOut>
-      <SignedIn><UserProfile routing="hash" /></SignedIn>
+      <Show when="signed-out"><div className="auth-fallback"><h1>Sign in to continue</h1><Link className="button" href="/account/sign-in">Sign in</Link></div></Show>
+      <Show when="signed-in"><UserProfile routing="hash" /></Show>
     </main>
   );
 }
