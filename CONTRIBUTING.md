@@ -21,4 +21,13 @@ Use Discussions for early or open-ended ideas. Open a feature request when the d
 
 Fettle's application source isn't hosted here, so this repository doesn't accept application-code contributions. Pull requests for the website and user documentation are welcome.
 
-Run `npm ci` and `npm run check` from `website/` before opening a pull request.
+For website or documentation changes, use Node 22, matching CI, and run these commands from `website/` before opening a pull request:
+
+```bash
+npm ci
+npm test
+npm run check
+npm run build
+```
+
+`npm run check` validates documentation frontmatter and TypeScript. The full build also builds the documentation, rejecting broken page links, Markdown links, and section anchors, then builds the website. When changing headings or internal links, `npm run docs:build` runs that documentation gate on its own.
