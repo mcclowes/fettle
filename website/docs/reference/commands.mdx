@@ -10,7 +10,7 @@ description: Command-line reference for Fettle.
 fettle <path>…                       Open repositories
 fettle turns [--json]                List turns for this terminal or worktree
 fettle review [turn-id]              Open a turn review
-fettle ai-review [pr] [--provider codex|claude]
+fettle ai-review [pr-number] [--provider codex|claude]
                                      Review a pull request in a read-only Saggar agent terminal
 fettle worktrees [--json] [--stale-after <days>]
                                      Inspect stale worktrees and suggested cleanup
@@ -24,9 +24,19 @@ fettle visual run                    Run configured visual checks
 fettle help
 ```
 
-Inside a Saggar terminal, `SAGGAR_SESSION` scopes `turns`, `review`, and
-`ai-review` to that session. `worktrees` only prints cleanup commands; Fettle
-never runs them. Exit codes: 0 done, 1 refused, 2 bad arguments, 3 nothing to
-talk to.
+Inside a Saggar terminal, `SAGGAR_SESSION` scopes `turns` and `review` to that
+session. Outside Saggar, they use the current Git worktree.
+
+`ai-review` requires a Saggar terminal and a Git worktree. Give it a positive
+pull request number, such as `fettle ai-review 42`, or omit the number to
+review the current branch's pull request. It starts a new read-only reviewer
+terminal, using Codex unless you choose `--provider claude`.
+
+`worktrees` runs from a Git worktree. `--stale-after` takes a nonnegative
+whole number of days; `0` is valid. It only prints cleanup commands; Fettle
+never runs them.
+
+Exit codes: 0 done, 1 refused or failed, 2 bad arguments, 3 unavailable,
+such as a missing Git worktree or Saggar session.
 
 Install the shim from **Help > Install the fettle shim…**.
