@@ -8,6 +8,7 @@
     "build": "npm run docs:build && next build",
     "start": "next start",
     "check": "npm run docs:check && npm run typecheck",
+    "test": "node --test scripts/*.test.mjs",
     "typecheck": "tsc --noEmit",
     "docs:dev": "docusaurus start --port 3001 --no-open",
     "docs:check": "node scripts/check-docs.mjs",
@@ -35,11 +36,17 @@
     "@docusaurus/core": {
       "tinypool": "2.1.2"
     },
+    "@docusaurus/bundler": {
+      "postcss-selector-parser": "7.1.6"
+    },
     "copy-webpack-plugin": {
       "serialize-javascript": "7.0.5"
     },
     "css-minimizer-webpack-plugin": {
       "serialize-javascript": "7.0.5"
+    },
+    "sockjs": {
+      "uuid": "11.1.1"
     }
   }
 }
