@@ -9,6 +9,7 @@ const config: Config = {
   baseUrl: '/docs/',
   trailingSlash: true,
   onBrokenLinks: 'throw',
+  onBrokenAnchors: 'throw',
   markdown: {hooks: {onBrokenMarkdownLinks: 'throw'}},
   organizationName: 'mcclowes',
   projectName: 'fettle',

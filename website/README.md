@@ -11,6 +11,8 @@ The Next.js site runs on port 3000, and Docusaurus runs on port 3001. `npm run b
 
 Set `NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY` to enable account pages locally. The site works without it.
 
+`npm run docs:build` fails on broken page links, Markdown links, and section anchors. Run it after changing headings or internal links; `npm run check` validates frontmatter and types but doesn't run the production anchor check. The full website build and CI include `docs:build`.
+
 ## Dependency maintenance
 
 Use Node 22, matching CI, and keep `npm ci`, `npm run check`, and `npm run build` passing when updating the lockfile.
