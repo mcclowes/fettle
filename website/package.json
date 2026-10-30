@@ -20,7 +20,7 @@
     "@docusaurus/core": "3.10.2",
     "@docusaurus/preset-classic": "3.10.2",
     "@mdx-js/react": "^3.0.0",
-    "next": "^16.4.0",
+    "next": "^16.4.3",
     "react": "19.2.8",
     "react-dom": "19.2.8"
   },
